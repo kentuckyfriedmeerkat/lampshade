@@ -2,12 +2,27 @@ import Express from 'express';
 import HTTP from 'http';
 
 import Path from 'path';
+import Yargs from 'yargs';
 
-var argv = {
-    port: 3000
-};
+import Config from './config.json';
+var argv = Yargs
+    .usage('Usage: $0 [options]')
+    .option('port', {
+        alias: 'p',
+        describe: 'Port to listen on',
+        default: Config.server.defaults.port,
+        type: 'number',
+        nargs: 1
+    })
+    .help('h').alias('h', 'help')
+    .argv;
+
+    console.log(argv);
 
 var app = Express();
+app.set('views', Path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 for (let dir of [
     'public',
     'node_modules'

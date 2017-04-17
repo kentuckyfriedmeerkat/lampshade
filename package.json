@@ -6,7 +6,9 @@
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "pug": "^2.0.0-beta11",
+    "yargs": "^7.1.0"
   },
   "jspm": {
     "directories": {
