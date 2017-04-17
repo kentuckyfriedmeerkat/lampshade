@@ -6,7 +6,7 @@ import Express from 'express';
 import HTTP from 'http';
 import SocketIOServer from 'socket.io';
 
-import SocketHandler from './modules/socketEvents';
+import SocketHandler from './server/socketEvents';
 
 // = IMPORTS: CONFIG
 import Yargs from 'yargs';
