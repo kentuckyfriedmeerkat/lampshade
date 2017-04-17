@@ -5,6 +5,8 @@ import SocketIOServer from 'socket.io';
 import Path from 'path';
 import Yargs from 'yargs';
 
+import SocketHandler from './modules/socketEvents';
+
 import Config from './config.json';
 var argv = Yargs
     .usage('Usage: $0 [options]')
@@ -35,9 +37,4 @@ server.listen(argv.port, () => {
     console.log('  Listening on port', argv.port)
 });
 
-socketListener.on('connection', socket => {
-    console.log(`- ${socket.handshake.address} connected`);
-
-    socket.on('disconnect', () =>
-        console.log(`- ${socket.handshake.address} disconnected`));
-});
+socketListener.on('connection', socket => SocketHandler(socket));
