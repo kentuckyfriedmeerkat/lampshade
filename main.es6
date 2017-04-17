@@ -4,7 +4,6 @@ import Path from 'path';
 // = IMPORTS: SERVER ==========================================================
 import Express from 'express';
 import HTTP from 'http';
-import SocketIOServer from 'socket.io';
 
 import SocketHandler from './server/socketEvents';
 
