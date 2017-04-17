@@ -40,15 +40,10 @@ app.get(['/dash', '/dashboard'], (req, res) => res.render('dash'));
 
 // Create an HTTP server from the app
 var server = HTTP.createServer(app);
-
-// Create a Socket.IO listener on the server
-var socketListener = SocketIOServer.listen(server);
+SocketHandler(server);
 
 // Begin listening on the configured port, outputting status messages
 server.listen(argv.port, () => {
     console.log('  Forge Graphics Server Gen2.5');
     console.log('  Listening on port', argv.port)
 });
-
-// Handle socket connections as defined in modules/socketEvents.es6
-socketListener.on('connection', socket => SocketHandler(socket));
