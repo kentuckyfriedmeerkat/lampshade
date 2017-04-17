@@ -2,6 +2,10 @@
     "server": {
         "defaults": {
             "port": 3000
-        }
+        },
+        "staticRoutes": [
+            "public",
+            "node_modules"
+        ]
     }
 }

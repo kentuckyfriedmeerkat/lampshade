@@ -24,10 +24,8 @@ var app = Express();
 app.set('views', Path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-for (let dir of [
-    'public',
-    'node_modules'
-]) app.use(`/${dir}`, Express.static(Path.join(__dirname, dir)));
+for (let dir of Config.server.staticRoutes)
+    app.use(`/${dir}`, Express.static(Path.join(__dirname, dir)));
 app.get('/', (req, res) => res.render('cg'));
 
 var server = HTTP.createServer(app);
