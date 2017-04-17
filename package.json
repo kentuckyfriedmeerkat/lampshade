@@ -8,13 +8,17 @@
     "babel-register": "^6.24.1",
     "express": "^4.15.2",
     "pug": "^2.0.0-beta11",
+    "socket.io": "^1.7.3",
     "yargs": "^7.1.0"
   },
   "jspm": {
     "directories": {
       "baseURL": "public"
     },
-    "dependencies": {},
+    "dependencies": {
+      "jquery": "npm:jquery@^3.2.1",
+      "socket.io-client": "github:socketio/socket.io-client@^1.7.2"
+    },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",

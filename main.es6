@@ -1,5 +1,6 @@
 import Express from 'express';
 import HTTP from 'http';
+import SocketIOServer from 'socket.io';
 
 import Path from 'path';
 import Yargs from 'yargs';
@@ -17,8 +18,6 @@ var argv = Yargs
     .help('h').alias('h', 'help')
     .argv;
 
-    console.log(argv);
-
 var app = Express();
 app.set('views', Path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -30,6 +29,15 @@ for (let dir of [
 app.get('/', (req, res) => res.render('cg'));
 
 var server = HTTP.createServer(app);
+var socketListener = SocketIOServer.listen(server);
 server.listen(argv.port, () => {
-    console.log('Listening on port', argv.port)
+    console.log('  Forge Graphics Server Gen2.5');
+    console.log('  Listening on port', argv.port)
+});
+
+socketListener.on('connection', socket => {
+    console.log(`- ${socket.handshake.address} connected`);
+
+    socket.on('disconnect', () =>
+        console.log(`- ${socket.handshake.address} disconnected`));
 });
