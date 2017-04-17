@@ -27,6 +27,7 @@ for (let dir of [
     'public',
     'node_modules'
 ]) app.use(`/${dir}`, Express.static(Path.join(__dirname, dir)));
+app.get('/', (req, res) => res.render('cg'));
 
 var server = HTTP.createServer(app);
 server.listen(argv.port, () => {
